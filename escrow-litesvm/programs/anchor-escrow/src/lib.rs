@@ -2,20 +2,6 @@
 #![allow(deprecated)]
 
 use anchor_lang::prelude::*;
-use litesvm::LiteSVM;
-use solana_sdk::{
-    instruction::{AccountMeta, Instruction},
-    pubkey::Pubkey,
-    signature::{Keypair, Signer, read_keypair_file},
-    system_program,
-    transaction::Transaction,
-};
-use litesvm_token::{
-    spl_token::{self, native_mint::DECIMALS},
-    CreateAssociatedTokenAccount, CreateMint, MintTo,
-};
-use spl_associated_token_account::get_associated_token_address;
-use sha2::{Sha256, Digest};
 
 mod state;
 mod instructions;
