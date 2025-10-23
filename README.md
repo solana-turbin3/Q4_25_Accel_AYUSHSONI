@@ -9,23 +9,21 @@
   
 </div>
 
-## 📌 About This Repository
+## About This Repository
 
 Welcome to my Solana Turbin3 Accelerated Builders journey! This repository serves as my proof of work space, documenting my progress, projects, and learnings throughout the program.
 
-### 🚧 Work in Progress
+### Work in Progress
 This is an active workspace where I'm continuously adding new content and improvements. Check back regularly for updates!
 
-## 📊 Progress Tracker
+## Progress Tracker
 
-| Milestone | Status | Completion Date |
 |-----------|--------|-----------------|
-| Program Start | ✅ Completed | MM/DD/YYYY |
-| Project 1: Escrow Program | 🚧 In Progress | - |
-| Project 2: Whitelist Transfer Hook | 📝 Planned | - |
-| Additional Projects | 📝 Planned | - |
+| Project 1: Escrow Program 
+| Project 2: Whitelist Transfer Hook 
+| Additional Projects 
 
-## 🚀 Projects
+## Projects
 
 ### 1. Escrow Program (LiteSVM)
 A Solana program that implements an escrow service, allowing secure token swaps between two parties. Built using LiteSVM for local testing and development.
@@ -56,7 +54,7 @@ A Solana program that implements transfer hooks for whitelisted token transfers,
 - Solana Program Framework
 - SPL Token-2022
 
-## 🛠️ Getting Started
+## Getting Started
 
 ### Prerequisites
 - Rust (latest stable version)
@@ -82,7 +80,7 @@ A Solana program that implements transfer hooks for whitelisted token transfers,
    cargo build-bpf
    ```
 
-## 📝 Project Structure
+## Project Structure
 
 ```
 .
@@ -91,43 +89,18 @@ A Solana program that implements transfer hooks for whitelisted token transfers,
 └── README.md             # This file
 ```
 
-## 📅 Latest Updates
 
-**Recent Changes:**
-- Initial repository setup and README creation
-- Added Escrow Program (In Progress)
-- Planned Whitelist Transfer Hook
-
-## 🤝 Connect with Me
-
-Let's connect and collaborate on Solana development!
-- [Twitter](https://twitter.com/yourhandle)
-- [GitHub](https://github.com/yourusername)
-- [LinkedIn](https://linkedin.com/in/yourprofile)
-
-## 🤝 Contributing
+## Contributing
 
 While this is primarily my personal proof of work space, I'm open to discussions and suggestions! Feel free to submit issues if you have any feedback or ideas.
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
-
-- [Solana Turbin3 Accelerated Builders](https://turbin3.solana.com/) program
-- The amazing Solana community
-- Mentors and peers for their guidance and support
-- [Solana Foundation](https://solana.org/) for creating this incredible ecosystem
-
----
 
 <div align="center">
   Built with ❤️ during the Solana Turbin3 Accelerated Builders program
   
   [![Solana Turbin3](https://img.shields.io/badge/Solana-Turbin3-14F195?style=for-the-badge&logo=solana&logoColor=white)](https://turbin3.solana.com/)
 </div>
-
----
-
-Built with ❤️ during Solana Turbin3 Accelerated Builders program
