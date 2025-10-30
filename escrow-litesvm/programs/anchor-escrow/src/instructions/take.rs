@@ -1,5 +1,11 @@
 use anchor_lang::prelude::*;
-use anchor_spl::{associated_token::AssociatedToken, token_interface::{Mint, TokenAccount, TokenInterface, TransferChecked, transfer_checked, CloseAccount, close_account}};
+use anchor_spl::{
+    associated_token::AssociatedToken,
+    token_interface::{
+        close_account, transfer_checked, CloseAccount, Mint, TokenAccount, TokenInterface,
+        TransferChecked,
+    },
+};
 
 use crate::state::Escrow;
 
@@ -60,6 +66,14 @@ impl<'info> Take<'info> {
     pub fn deposit(&mut self) -> Result<()> {
         let cpi_program = self.token_program.to_account_info();
 
+        let clock = Clock::get();
+        let current_time = clock?.unix_timestamp;
+
+        require!(
+            self.escrow.lock_period <= current_time,
+            EscrowError::LockPeriodNotElapsed
+        );
+
         let cpi_accounts = TransferChecked {
             from: self.taker_ata_b.to_account_info(),
             to: self.maker_ata_b.to_account_info(),
@@ -77,7 +91,7 @@ impl<'info> Take<'info> {
             b"escrow",
             self.maker.key.as_ref(),
             &self.escrow.seed.to_le_bytes()[..],
-            &[self.escrow.bump]
+            &[self.escrow.bump],
         ]];
 
         let cpi_program = self.token_program.to_account_info();
@@ -105,4 +119,10 @@ impl<'info> Take<'info> {
 
         close_account(cpi_context)
     }
+}
+
+#[error_code]
+pub enum EscrowError {
+    #[msg("Lock period has not elapsed yet")]
+    LockPeriodNotElapsed,
 }

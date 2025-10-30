@@ -1,5 +1,8 @@
 use anchor_lang::prelude::*;
-use anchor_spl::{associated_token::AssociatedToken, token_interface::{Mint, TokenAccount, TokenInterface, TransferChecked, transfer_checked}};
+use anchor_spl::{
+    associated_token::AssociatedToken,
+    token_interface::{transfer_checked, Mint, TokenAccount, TokenInterface, TransferChecked},
+};
 
 use crate::state::Escrow;
 
@@ -10,14 +13,12 @@ pub struct Make<'info> {
     pub maker: Signer<'info>,
     pub mint_a: InterfaceAccount<'info, Mint>,
     pub mint_b: InterfaceAccount<'info, Mint>,
-
     #[account(
         mut,
         associated_token::mint = mint_a,
         associated_token::authority = maker,
     )]
     pub maker_ata_a: InterfaceAccount<'info, TokenAccount>,
-
     #[account(
         init,
         payer = maker,
@@ -26,7 +27,6 @@ pub struct Make<'info> {
         space = 8 + Escrow::INIT_SPACE,
     )]
     pub escrow: Account<'info, Escrow>,
-    
     #[account(
         init,
         payer = maker,
@@ -40,13 +40,20 @@ pub struct Make<'info> {
 }
 
 impl<'info> Make<'info> {
-    pub fn init_escrow(&mut self, seed: u64, receive: u64, bumps: &MakeBumps) -> Result<()> {
+    pub fn init_escrow(
+        &mut self,
+        seed: u64,
+        receive: u64,
+        lock_period: i64,
+        bumps: &MakeBumps,
+    ) -> Result<()> {
         self.escrow.set_inner(Escrow {
             seed,
             maker: self.maker.key(),
             mint_a: self.mint_a.key(),
             mint_b: self.mint_b.key(),
             receive,
+            lock_period,
             bump: bumps.escrow,
         });
 
